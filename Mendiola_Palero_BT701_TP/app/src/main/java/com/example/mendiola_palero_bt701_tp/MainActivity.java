@@ -1,10 +1,7 @@
 package com.example.mendiola_palero_bt701_tp;
 
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.DialogInterface;
-import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
@@ -412,24 +409,7 @@ public class MainActivity extends AppCompatActivity
                 img42.getVisibility() == View.INVISIBLE &&
                 img43.getVisibility() == View.INVISIBLE)
         {
-            AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(MainActivity.this);
-            alertDialogBuilder.setMessage("Game Over!")
-                    .setCancelable(false)
-                    .setPositiveButton("NEW", new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialogInterface, int i) {
-                    Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                    startActivity(intent);
-                    finish();
-                }
-            }).setNegativeButton("EXIT", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialogInterface, int i) {
-                            finish();
-                        }
-                    });
-            AlertDialog alertDialog = alertDialogBuilder.create();
-            alertDialog.show();
+
         }
     }
 
