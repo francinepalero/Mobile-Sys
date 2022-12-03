@@ -1,7 +1,10 @@
 package com.example.mendiola_palero_bt701_tp;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
@@ -12,12 +15,15 @@ import java.util.Collections;
 
 public class MainActivity extends AppCompatActivity
 {
+    ImageButton resetButton;
+
     ImageView img11, img12, img13,
               img21, img22, img23,
               img31, img32, img33,
               img41, img42, img43;
 
-    Integer[] cardsArray = {101, 102, 103, 104, 105, 106, 201, 202, 203, 204, 205, 206};
+    Integer[] cardsArray = {101, 102, 103, 104, 105, 106,
+                            201, 202, 203, 204, 205, 206};
 
     int img101, img102, img103,
         img104, img105, img106,
@@ -33,6 +39,8 @@ public class MainActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        resetButton = (ImageButton) findViewById(R.id.resetButton);
 
         img11 = (ImageView) findViewById(R.id.aespaCard1);
         img12 = (ImageView) findViewById(R.id.aespaCard2);
@@ -63,6 +71,13 @@ public class MainActivity extends AppCompatActivity
         frontOfCardsResources();
 
         Collections.shuffle(Arrays.asList(cardsArray));
+
+        resetButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                reset();
+            }
+        });
 
         img11.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -116,7 +131,7 @@ public class MainActivity extends AppCompatActivity
             @Override
             public void onClick(View view) {
                 int card = Integer.parseInt((String) view.getTag());
-                doStuff(img32, card);
+                doStuff(img31, card);
             }
         });
 
@@ -409,7 +424,25 @@ public class MainActivity extends AppCompatActivity
                 img42.getVisibility() == View.INVISIBLE &&
                 img43.getVisibility() == View.INVISIBLE)
         {
-
+            AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(MainActivity.this);
+            alertDialogBuilder
+                    .setMessage("Game Finished! Well Done, MY! Want to play again?")
+                    .setCancelable(false)
+                    .setPositiveButton("Retry", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            reset();
+                            finish();
+                        }
+                    })
+                    .setNegativeButton("Exit", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            finish();
+                        }
+                    });
+            AlertDialog alertDialog = alertDialogBuilder.create();
+            alertDialog.show();
         }
     }
 
@@ -420,15 +453,20 @@ public class MainActivity extends AppCompatActivity
         img103 = R.drawable.xenoglossy;
         img104 = R.drawable.naevis;
         img105 = R.drawable.armamenter;
-        img106 = R.drawable.rocket_puncher1;
-        img201 = R.drawable.naevis1;
-        img202 = R.drawable.ed_hacker;
-        img203 = R.drawable.ed_hacker1;
-        img204 = R.drawable.armamenter1;
-        img205 = R.drawable.black_mamba1;
-        img206 = R.drawable.xenoglossy1;
+        img106 = R.drawable.ed_hacker;
+        img201 = R.drawable.black_mamba1;
+        img202 = R.drawable.rocket_puncher1;
+        img203 = R.drawable.xenoglossy1;
+        img204 = R.drawable.naevis1;
+        img205 = R.drawable.armamenter1;
+        img206 = R.drawable.ed_hacker1;
 
     }
 
+    public void reset()
+    {
+        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+        startActivity(intent);
+    }
 
 }
