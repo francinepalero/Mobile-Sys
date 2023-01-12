@@ -1,5 +1,7 @@
 <resources>
     <string name="app_name">Mendiola-Palero_FinalsTP</string>
+
+    <!--NUMBER 2-->
     <string-array name = "flavors">
         <item>Chocolate</item>
         <item>Vanilla</item>

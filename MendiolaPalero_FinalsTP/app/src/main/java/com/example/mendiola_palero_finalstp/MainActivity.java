@@ -1,29 +1,35 @@
 package com.example.mendiola_palero_finalstp;
 
 import androidx.appcompat.app.AppCompatActivity;
-import android.content.DialogInterface;
-import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.os.Handler;
-import android.view.View;
 import android.widget.*;
-
-import java.util.Arrays;
-import java.util.Collections;
 
 public class MainActivity extends AppCompatActivity {
 
+    // NUMBER 3
     ImageView logo;
+    Button button;
 
-    private String sharedPrefFile = "com.example.android.myapplication";
-    String mPreferences = getSharedPreferences(sharedPrefFile, MODE_PRIVATE);
+    // NUMBER 5
+    private final String sharedPrefFile = "com.example.mendiola_palero_finalstp";
+    SharedPreferences mPreferences = getSharedPreferences(sharedPrefFile, MODE_PRIVATE);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        button = (Button)findViewById(R.id.button1);
 
+        // NUMBER 3
         logo.setImageResource(R.drawable.school_logo);
 
+        button.setOnClickListener(view -> {
+            // NUMBER 5
+            int x = 100;
+            SharedPreferences.Editor editor = mPreferences.edit();
+            editor.putInt("max", x);
+            editor.apply();
+        });
     }
 }
