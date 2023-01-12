@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Mendiola-Palero_FinalsTP</string>
+    <string-array name = "flavors">
+        <item>Chocolate</item>
+        <item>Vanilla</item>
+        <item>Cheese</item>
+    </string-array>
+</resources>
