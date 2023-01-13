@@ -30,7 +30,7 @@
       app:layout_constraintStart_toStartOf="parent"
       app:layout_constraintTop_toTopOf="parent"
       app:layout_constraintVertical_bias="0.369"
-      app:srcCompat="@drawable/school_logo" />
+      android:src="@drawable/school_logo" />
 
   <Button
       android:id="@+id/button1"
